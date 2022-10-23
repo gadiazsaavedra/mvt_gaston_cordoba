@@ -1,10 +1,22 @@
 from django.shortcuts import render
 from primerMVT.models import Familiar
+from django.http import HttpResponse
 
 # Create your views here.
-def index(request):
-    return render(request, "/Users/harkonen/Desktop/MVT/mvt_gaston_cordoba/primerMVT/templates/example/saludar.html")
 
-def mostrar_familiares(request):
-  lista_familiares = Familiar.objects.all()
-  return render(request, "/Users/harkonen/Desktop/MVT/mvt_gaston_cordoba/primerMVT/templates/example/familiares.html", {"lista_familiares": lista_familiares})
+
+def index(request) -> HttpResponse:
+
+    return render(
+        request,
+        "example/saludar.html",
+    )
+
+
+def mostrar_familiares(request) -> HttpResponse:
+    lista_familiares = Familiar.objects.all()
+    return render(
+        request,
+        "example/familiares.html",
+        {"lista_familiares": lista_familiares},
+    )
